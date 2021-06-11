@@ -1,6 +1,0 @@
-function VideoSideBar() {
-    return (
-        <section>
-        
-    )
-}
