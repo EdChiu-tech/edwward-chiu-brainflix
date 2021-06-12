@@ -1,40 +1,21 @@
 import React from "react"
 
-function Comments (){
+function Comments (props){
     return (
-        <section>
-            <div>
-                <h3>Counter</h3>
+        <div className = "commentEntry">
+            <div className = "commentEntry__avatar">
+                <img />
             </div>
-            <div>
-                <div>
-                    <img />
+            <div className = "commentEntry__content-container">
+                <div className = "commentEntry__name-date-container">
+                    <h3 className = "commentEntry__name">{props.name}</h3>
+                    <p className = "commentEntry__date">{props.timestamp}</p>
                 </div>
-                <div>
-                    <form>
-                        <label>JOIN THE CONVERSATION</label>
-                        <textarea></textarea>
-                            <div>
-                                <button>COMMENT</button>
-                            </div>
-                    </form>
+                <div className = "commentEntry__comment-container">
+                    <p className = "commentEntry__comment">{props.comment}</p>
                 </div>
             </div>
-            <div>
-                <div>
-                    <img />
-                </div>
-                <div>
-                    <div>
-                        <h3></h3>
-                        <p></p>
-                    </div>
-                    <div>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     )
 }
 

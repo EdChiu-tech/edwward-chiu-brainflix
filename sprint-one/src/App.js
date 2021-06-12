@@ -1,29 +1,42 @@
-import {Component} from "react"
+import { Component } from "react"
 import Header from "./components/Header/Header"
 import HeroVideo from "./components/HeroVideo/HeroVideo"
 import VideoDescription from "./components/VideoDescription/VideoDescription"
 import VideoList from "./components/VideoList/VideoList"
-import Comments from "./components/Comments/Comments"
-import videos from "../src/data/videos.json"
+import DisplayComments from "./components/DisplayComments/DisplayComments"
 import details from "../src/data/video-details.json"
 
 class App extends Component {
 
-state = {
-  data: details,
-  // list: videos
-}
+  state = {
+    data: details,
+    currentVideo: details[0],
+  }
 
-  render(){
+  generateSuggestedVideos = () =>{
+    return this.state.data.filter(video => video.id !== this.state.currentVideo.id)
+  }
+
+  clickHandler = (video) => {
+    this.setState({ currentVideo: video })
+  }
+
+  render() {
     return (
       <div className="App">
         <Header />
-        <HeroVideo />
-        <VideoDescription />
-        <Comments />
+        <HeroVideo
+          currentVideo = {this.state.currentVideo}
+        />
+        <VideoDescription 
+          data = {this.state.currentVideo}
+        />
+        <DisplayComments
+          data = {this.state.currentVideo.comments}
+        />
         <VideoList
-            data = {this.state.data}
-            // list = {this.state.list}
+          data = {this.generateSuggestedVideos()}
+          clickHandler = {this.clickHandler}
         />
       </div>
     );

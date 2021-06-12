@@ -8,11 +8,11 @@ function Header() {
     return(
         <header className = "header">
             <section className = "header__logo-container">
-                <img  className = "header__logo-image"src = {logo} alt = "brainflix logo"/>
+                <img  className = "header__logo-image "src = {logo} alt = "brainflix logo"/>
             </section>
             <section className = "header__form-container">
                 <form className = "header__form">
-                    <label className = "header__form-heading" for = "search"></label>
+                    <label className = "header__form-heading" htmlFor = "search"></label>
                     <input className = "header__form-input" type = "text" id = "search" name = "search" placeholder = "Search"></input>
                 </form>
             </section>

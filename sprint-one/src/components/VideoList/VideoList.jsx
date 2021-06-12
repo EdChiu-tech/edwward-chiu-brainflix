@@ -1,19 +1,16 @@
-import {Component} from "react"
 import SuggestedVideo from "../SuggestedVideo/SuggestedVideo"
 
 function VideoList(props) {
-    console.log(props)
     return(
         <section>
+            <h3>Next Video</h3>
             {
             props.data.map(video =>{
                 return(
                     <SuggestedVideo
-                    id = {video.id}
                     key = {video.id}
-                    image = {video.image}
-                    title = {video.title}
-                    channel = {video.channel}
+                    video = {video}                      
+                    clickHandler = {props.clickHandler}
                     />
                     )
                 })
