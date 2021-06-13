@@ -1,9 +1,10 @@
 import SuggestedVideo from "../SuggestedVideo/SuggestedVideo"
+import "./VideoList.scss"
 
 function VideoList(props) {
     return(
-        <section>
-            <h3>Next Video</h3>
+        <section className="videolist">
+            <h3 className="videolist__header">NEXT VIDEO</h3>
             {
             props.data.map(video =>{
                 return(

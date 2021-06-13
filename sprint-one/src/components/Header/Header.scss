@@ -1,4 +1,75 @@
+@use "../../partials/colors" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/typography" as *;
+
+
 .header {
+  @include flex;
+  @include flex-center;
+  flex-grow: 1;
+  flex-direction: column;
+  margin: 1rem;
+  height: 100%;
+
+  &__form{
+    @include flex;
+    width: 100%;
+    height: 100%;
+    
+  &-container{
+    @include flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 48px;
+    }
+
+  &-input{
+    @include flex;
+      width: 100%;
+      padding-left: 2.5rem;
+      background-image: url(../../assets/icon/Icon-search.svg);
+      background-repeat: no-repeat;
+      background-position: 3%, 50%;
+      border-radius: 4px;
+      border: $mercury solid 1px;
+
+      &:focus{
+        border-color:$primaryBlue;
+      }
+    }
+  }
+
+  &__button{
+      @include flex;
+      @include flex-center;
+      font: $mLabelsButtons;
+      font-weight: 600;
+      color: $alabaster;
+      background-color: $primaryBlue;
+      border: none;
+      border-radius: 4px;
+      width: 80%;
+      height: 100%;
+
+      &:hover{
+        background-color: $primaryHover;
+      }
+
+      &-icon{
+        padding: 0 10px;
+      }
+
+
+    &-container{
+      @include flex;
+      justify-content: space-between;
+      margin-top: 0.75rem;
+      flex-direction: row;
+      width: 100%;
+      height: 48px;
+  
+    }
+  }
 
     &__avatar{
         object-fit: cover;

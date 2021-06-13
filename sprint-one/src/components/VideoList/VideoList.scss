@@ -1,0 +1,13 @@
+@use "../../partials/colors" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/typography" as *;
+
+.videolist{
+    margin: 1rem;
+
+    &__header{
+        margin: 2rem 0;
+        font: $mLabelsButtons;
+        color: $silver;
+    }
+}

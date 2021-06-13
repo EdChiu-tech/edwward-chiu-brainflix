@@ -1,16 +1,51 @@
-.video{
-    display: flex;
+@use "../../partials/colors" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/typography" as *;
 
+.video{
+    @include flex;
+    margin: 1rem 0;
 
     &__img{
+        border-radius: 4px;
         object-fit: cover;
-        width: 100%;
-        height: 100%;
+        max-height: 100%;
+        position: relative;
     }
 
     &__container{
-        display:flex;
-        width: 100px;
-        height: 100px;
+        overflow: hidden;
+        @include flex;
+        flex-direction: column;
+        flex-grow: 1;
+        height: 100%;
+        width: 45%;
+        min-width: 45%;
+    }
+
+    &__desc-container{
+        @include flex;
+        margin-left: 1rem;
+        flex-direction: column;
     } 
+    &__title{
+        font: $mSubheader;
+        margin-bottom: 0.5rem;
+        display:
+            -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    }
+    &__creator{
+        font: $mBody;
+        display:
+            -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

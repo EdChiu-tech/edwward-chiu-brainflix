@@ -1,0 +1,53 @@
+@use "../../partials/colors" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/typography" as *;
+@use "../../partials/variables" as *;
+
+.commentEntry{
+    @include flex;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    flex-grow:1;
+    border-bottom: $divider;
+
+    &__avatar{
+        &-container{
+            @include flex;
+            margin-right: 1rem;
+            background-color: $mercury;
+            height: 48px;
+            width: 48px;
+            min-width: 48px;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+    }
+
+    &__content-container{
+        @include flex;
+        flex-direction: column;
+    }
+
+    &__name-date-container{
+        @include flex;
+        margin-bottom: .5rem;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    
+    &__name{
+        font: $mSubheader;
+    }
+
+    &__date{
+        font: $mBody;
+        color: $silver;
+    }
+
+    &__comment{
+        @include flex;
+            &-container{
+            @include flex;
+        }
+    }
+}

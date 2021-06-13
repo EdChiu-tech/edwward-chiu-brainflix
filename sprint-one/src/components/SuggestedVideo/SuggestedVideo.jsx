@@ -6,7 +6,7 @@ function SuggestedVideo (props) {
     return (
     <div className = "video">
         <div className = "video__container" onClick = {() => (props.clickHandler(video))}>
-            <img className = "video__img" src = {video.image} />
+            <img className = "video__img" src = {video.image} alt="image"/>
         </div>
         <div className = "video__desc-container">
         <h3 className = "video__title">{video.title}</h3>

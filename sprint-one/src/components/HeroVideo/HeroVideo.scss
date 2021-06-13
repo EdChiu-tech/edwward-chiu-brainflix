@@ -1,0 +1,19 @@
+@use "../../partials/colors" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/typography" as *;
+
+.hero{
+    @include flex;
+
+
+    &__container{
+        @include flex;
+        width: 100%;
+        height: auto;
+    }
+
+    &__video{
+        @include flex;
+        width: 100vw;
+    }
+}
