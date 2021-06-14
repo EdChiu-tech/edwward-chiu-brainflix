@@ -4,6 +4,22 @@
 @use "./partials/variables" as *;
 
 .App{
-    font-family: "Avenir";
-    color: $primaryBlue;
+    &__divider-container{
+        @include flex;
+        flex-direction: column;
+            @include desktop{
+                flex-direction: row;
+            }
+    }
+    &__main-content{
+        @include desktop{
+            margin-left: 6rem;
+        }
+    }
+    &__sidebar{
+        @include desktop{
+            margin-right: 6rem;
+            border-left: $divider;
+        }
+    }
 }

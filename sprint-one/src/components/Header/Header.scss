@@ -6,10 +6,37 @@
 .header {
   @include flex;
   @include flex-center;
-  flex-grow: 1;
   flex-direction: column;
   margin: 1rem;
   height: 100%;
+
+    @include tablet{
+      flex-direction: row;
+      justify-content: flex-start;
+      margin: 1rem 2rem;
+
+      @include desktop{
+        margin: 1.5rem 6rem;
+      }
+    }
+
+  &__logo{
+    &-container{
+      @include flex;
+      width: 100%;
+      justify-content: center;
+
+      @include tablet{
+        justify-content: flex-start;
+        width: 40%;
+      }
+
+      @include desktop{
+        width: 90%;
+      }
+    }
+  }
+
 
   &__form{
     @include flex;
@@ -21,12 +48,22 @@
     margin-top: 10px;
     width: 100%;
     height: 48px;
+
+      @include tablet{
+        margin-right: 2rem;
+        width: 50%;
+      }
+
+      @include desktop{
+        width: 45%
+      }
     }
 
   &-input{
     @include flex;
       width: 100%;
       padding-left: 2.5rem;
+      background-color: $alabaster;
       background-image: url(../../assets/icon/Icon-search.svg);
       background-repeat: no-repeat;
       background-position: 3%, 50%;
@@ -34,6 +71,7 @@
       border: $mercury solid 1px;
 
       &:focus{
+        outline: none;
         border-color:$primaryBlue;
       }
     }
@@ -42,14 +80,24 @@
   &__button{
       @include flex;
       @include flex-center;
+      margin-right: 1rem;
       font: $mLabelsButtons;
       font-weight: 600;
-      color: $alabaster;
+      color: #fff;
       background-color: $primaryBlue;
       border: none;
       border-radius: 4px;
-      width: 80%;
+      width: 100%;
       height: 100%;
+
+        @include tablet{
+          width: 75%;
+          justify-content: center;
+        }
+
+        @include desktop{
+          width: 60%;
+        }
 
       &:hover{
         background-color: $primaryHover;
@@ -67,19 +115,23 @@
       flex-direction: row;
       width: 100%;
       height: 48px;
-  
+
+      @include tablet{
+        justify-content: flex-start;
+        width: 30%;
+      }
     }
   }
 
     &__avatar{
-        object-fit: cover;
         &-container{
             height: 48px;
             width: 48px;
+            min-width: 48px;
             overflow: hidden;
             display: flex;
-            margin: 0;
             border-radius: 50%;
+            
+        }
     }
-  }
 }

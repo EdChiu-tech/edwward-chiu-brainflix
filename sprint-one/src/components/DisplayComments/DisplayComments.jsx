@@ -1,14 +1,13 @@
-import { Component } from "react"
 import Comments from "../Comments/Comments"
 import avatar from "../../assets/images/Mohan-muruge.jpg"
 import "./DisplayComments.scss"
 
-class DisplayComments extends Component {
-    render() {
+function DisplayComments (props){
+
         return (
             <section className="comments">
                 <div className="comments__counter-container">
-                    <h3 className="comments__counter">{`${this.props.data.length} Comments`}</h3>
+                    <h3 className="comments__counter">{`${props.data.length} Comments`}</h3>
                 </div>
                 <div className="comments__input-section">
                     <div className="comments__comment-box">
@@ -19,8 +18,8 @@ class DisplayComments extends Component {
                             <div className="comments__avatar-container">
                                 <img className="comments__avatar" src={avatar} alt="avatar picture" />
                             </div>
-                            <form className="comments__form">
-                                <textarea className="comments__form-input"></textarea>
+                            <form className="comments__form" onSubmit={props.preventDefault}>
+                                <textarea className="comments__form-input" placeholder="Write comment here"></textarea>
                                 <div>
                                     <button className="comments__form-button">COMMENT</button>
                                 </div>
@@ -29,7 +28,7 @@ class DisplayComments extends Component {
                     </div>
                 </div>
                 <div className="comments__container">
-                    {this.props.data.map(comment => {
+                    {props.data.map(comment => {
                         return (
                             <Comments
                                 key={comment.id}
@@ -45,6 +44,5 @@ class DisplayComments extends Component {
             </section>
         );
     }
-}
 
 export default DisplayComments

@@ -5,6 +5,7 @@ import VideoDescription from "./components/VideoDescription/VideoDescription"
 import VideoList from "./components/VideoList/VideoList"
 import DisplayComments from "./components/DisplayComments/DisplayComments"
 import details from "../src/data/video-details.json"
+import "./App.scss"
 
 class App extends Component {
 
@@ -13,7 +14,7 @@ class App extends Component {
     currentVideo: details[0],
   }
 
-  generateSuggestedVideos = () =>{
+  generateSuggestedVideos = () => {
     return this.state.data.filter(video => video.id !== this.state.currentVideo.id)
   }
 
@@ -21,23 +22,34 @@ class App extends Component {
     this.setState({ currentVideo: video })
   }
 
+  preventDefault = (e) => {
+    e.preventDefault()
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
         <HeroVideo
-          currentVideo = {this.state.currentVideo}
+          currentVideo={this.state.currentVideo}
         />
-        <VideoDescription 
-          data = {this.state.currentVideo}
-        />
-        <DisplayComments
-          data = {this.state.currentVideo.comments}
-        />
-        <VideoList
-          data = {this.generateSuggestedVideos()}
-          clickHandler = {this.clickHandler}
-        />
+        <div className="App__divider-container">
+          <div className="App__main-content">
+            <VideoDescription
+              data={this.state.currentVideo}
+            />
+            <DisplayComments
+              data={this.state.currentVideo.comments}
+              preventDefault={this.preventDefault}
+            />
+          </div>
+          <div className="App__sidebar">
+            <VideoList
+              data={this.generateSuggestedVideos()}
+              clickHandler={this.clickHandler}
+            />
+          </div>
+        </div>
       </div>
     );
   }

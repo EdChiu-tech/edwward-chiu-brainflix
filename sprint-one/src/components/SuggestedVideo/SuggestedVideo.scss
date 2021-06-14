@@ -7,27 +7,28 @@
     margin: 1rem 0;
 
     &__img{
-        border-radius: 4px;
         object-fit: cover;
-        max-height: 100%;
-        position: relative;
+        width: 100%;
+        height: auto;
     }
 
     &__container{
-        overflow: hidden;
         @include flex;
-        flex-direction: column;
-        flex-grow: 1;
-        height: 100%;
-        width: 45%;
-        min-width: 45%;
+        border-radius: 4px;
+        overflow: hidden;
+        width: 140px;
+        height: 80px;
+        min-width: 140px;
+        min-height: 70px;
     }
 
     &__desc-container{
         @include flex;
+        justify-content: space-evenly;
         margin-left: 1rem;
         flex-direction: column;
     } 
+
     &__title{
         font: $mSubheader;
         margin-bottom: 0.5rem;
@@ -37,8 +38,8 @@
             -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
-
     }
+
     &__creator{
         font: $mBody;
         display:
