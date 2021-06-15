@@ -1,0 +1,11 @@
+@use "./partials/colors" as *;
+@use "./partials/mixins" as *;
+@use "./partials/typography" as *;
+@use "./partials/variables" as *;
+
+*, body{
+    padding: 0;
+    box-sizing: border-box;
+    margin:0;
+    font-family:"Avenir";
+}

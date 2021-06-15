@@ -1,0 +1,87 @@
+@use "../../partials/colors" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/typography" as *;
+@use "../../partials/variables" as *;
+
+.upload{
+    @include flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    width: 100%;
+    height: auto;
+    
+    &__header{
+        font: $mPageHeader;
+        margin: 3rem 0;
+    }
+
+    &__form-container{
+        @include flex;
+        flex-direction: column;
+    }
+
+    &__label{
+        font: $mLabelsButtons;
+        color: $silver;
+        font-weight: 400;
+    }
+
+    &__thumbnail{
+        &-container{
+            width: 288px;
+            height: auto;
+        }
+
+        &-image{
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+    }
+
+    &__form{
+        @include flex;
+        flex-direction: column;
+    }
+
+    &__input{
+        &-container{
+        @include flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+
+        }
+        &-title{
+            @include flex;
+            width: 100%;
+            height: auto;
+        }
+        &-description{
+            resize: none;
+            height: 143px;
+        }
+    }
+    &__button{
+        margin-top: 3rem;
+        border: none;
+        padding: 1rem;
+        width: 100%;
+        background-color: $primaryBlue;
+        font: $mLabelsButtons;
+        color: $alabaster;
+
+        &--cancel{
+            background-color: white;
+            color: $primaryBlue;
+            margin-top: 2rem;
+        }
+        
+        &__container{
+            @include flex;
+            flex-direction: column;
+            height: auto;
+            width: 100%;
+        }
+    }
+}

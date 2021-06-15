@@ -1,0 +1,40 @@
+@use "../../partials/colors" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/typography" as *;
+
+.hero{
+    @include flex;
+
+    &__container{
+        @include flex;
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+        background-color: black;
+
+        @include tablet{
+            max-height: 60vh;
+        }
+
+            @include desktop{
+                max-height: 60vh;
+            }
+    }
+
+
+    &__video{
+        @include flex;
+        width: 100vw;
+
+        @include tablet{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        display:block;
+        }
+
+        @include desktop{
+            width: 80%;
+        }
+    }
+}
