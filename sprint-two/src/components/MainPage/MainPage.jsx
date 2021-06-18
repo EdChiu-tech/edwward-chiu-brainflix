@@ -3,38 +3,63 @@ import HeroVideo from "../HeroVideo/HeroVideo"
 import VideoDescription from "../VideoDescription/VideoDescription"
 import VideoList from "../VideoList/VideoList"
 import DisplayComments from "../DisplayComments/DisplayComments"
-import details from "../../data/video-details.json"
+import {API_URL, API_KEY} from "../../utils/utils"
 import "../../App.scss"
+import axios from "axios"
 
 class MainPage extends Component {
     state = {
-        data: details,
-        currentVideo: details[0],
+        videoList: [],
+        currentVideo: [],
+        loading: true,
+    }
+
+    getVideoById = (videoId)=>{
+        axios.get(`${API_URL}/videos/${videoId}/?api_key=${API_KEY}`)
+            .then(res =>{
+                this.setState({
+                    currentVideo: res.data,
+                    loading: false,
+                })
+            })
+            .catch(err =>{
+                console.log(err)
+            })
     }
 
     componentDidMount(){
-
-    }
-    
-    componentDidUpdate(){
-    
-    }
-
-
-    generateSuggestedVideos = () => {
-        return this.state.data.filter(video => video.id !== this.state.currentVideo.id)
-    }
-
-    clickHandler = (video) => {
-        this.setState({ currentVideo: video })
+        // 
+        axios.get(`${API_URL}/videos/?api_key=${API_KEY}`)
+            .then(res =>{
+                this.setState({
+                    videoList: res.data
+                })
+                this.getVideoById(this.state.videoList[0].id)
+            })
+            .catch(err =>{
+                console.log(err)
+            })
     }
 
-    preventDefault = (e) => {
-        e.preventDefault()
+    componentDidUpdate(prevProps){
+        //2
+
+        const {videoId} = this.props.match.params;
+        console.log(videoId, prevProps.match.params.videoId);
+        if(videoId !== prevProps.match.params.videoId){
+            this.getVideoById(videoId);
+        }
+        console.log(this.props.match.params)
     }
-    
+
     render() {
-        console.log(this.props.routeProps)
+        //0
+        console.log(this.props)
+
+        if (this.state.loading === true) {
+            return <div>Loading...</div>
+        }
+
         return (
             <div>
                 <HeroVideo
@@ -52,8 +77,7 @@ class MainPage extends Component {
                     </div>
                     <div className="App__sidebar">
                         <VideoList
-                            data={this.generateSuggestedVideos()}
-                            clickHandler={this.clickHandler}
+                            data={this.state.videoList}
                         />
                     </div>
                 </div>
@@ -63,3 +87,14 @@ class MainPage extends Component {
 }
 
 export default MainPage
+
+
+
+
+    // clickHandler = (video) => {
+    //     this.setState({ currentVideo: video })
+    // }
+
+    // preventDefault = (e) => {
+    //     e.preventDefault()
+    // }

@@ -2,12 +2,14 @@ import Comments from "../Comments/Comments"
 import avatar from "../../assets/images/Mohan-muruge.jpg"
 import "./DisplayComments.scss"
 
-function DisplayComments(props) {
+function DisplayComments({data : comments, preventDefault}) {
+
+    console.log(comments)
 
     return (
         <section className="comments">
             <div className="comments__counter-container">
-                <h3 className="comments__counter">{`${props.data.length} Comments`}</h3>
+                <h3 className="comments__counter">{`${comments.length} Comments`}</h3>
             </div>
             <div className="comments__input-section">
                 <div className="comments__comment-box">
@@ -18,7 +20,7 @@ function DisplayComments(props) {
                         <div className="comments__avatar-container">
                             <img className="comments__avatar" src={avatar} alt="avatar" />
                         </div>
-                        <form className="comments__form" onSubmit={props.preventDefault}>
+                        <form className="comments__form" onSubmit={preventDefault}>
                             <textarea className="comments__form-input" placeholder="Write comment here"></textarea>
                             <button className="comments__form-button">COMMENT</button>
                         </form>
@@ -26,7 +28,7 @@ function DisplayComments(props) {
                 </div>
             </div>
             <div className="comments__container">
-                {props.data.map(comment => {
+                {comments.map(comment => {
                     return (
                         <Comments
                             key={comment.id}

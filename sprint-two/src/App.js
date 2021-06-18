@@ -14,11 +14,11 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={MainPage} />
-          <Route exact path="/UploadPage" component={UploadPage} />
-          <Route path="/:id"
+          <Route exact path="/upload_page" component={UploadPage} />
+          <Route path="/:videoId"
             render={(routeProps) => {
               return <MainPage
-                routeProps={routeProps}
+                {...routeProps}
               />
               }
             }

@@ -2,6 +2,8 @@ import React from "react"
 import "./HeroVideo.scss"
 
 function HeroVideo(props) {
+
+    console.log(props)
     return (
         <section className="hero">
             <div className="hero__container">
