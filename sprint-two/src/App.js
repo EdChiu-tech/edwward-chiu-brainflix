@@ -11,11 +11,19 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={MainPage} />
-        <Route exact path="/Upload" component={UploadPage} />
-      </Switch>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/UploadPage" component={UploadPage} />
+          <Route path="/:id"
+            render={(routeProps) => {
+              return <MainPage
+                routeProps={routeProps}
+              />
+              }
+            }
+          />
+        </Switch>
       </BrowserRouter>
 
     );

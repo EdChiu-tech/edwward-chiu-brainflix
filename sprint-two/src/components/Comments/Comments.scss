@@ -26,6 +26,10 @@
     &__content-container{
         @include flex;
         flex-direction: column;
+
+        @include desktop{
+            margin-right: 2rem;
+        }
     }
 
     &__name-date-container{

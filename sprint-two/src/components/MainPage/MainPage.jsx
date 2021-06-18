@@ -7,11 +7,19 @@ import details from "../../data/video-details.json"
 import "../../App.scss"
 
 class MainPage extends Component {
-
     state = {
         data: details,
         currentVideo: details[0],
     }
+
+    componentDidMount(){
+
+    }
+    
+    componentDidUpdate(){
+    
+    }
+
 
     generateSuggestedVideos = () => {
         return this.state.data.filter(video => video.id !== this.state.currentVideo.id)
@@ -26,6 +34,7 @@ class MainPage extends Component {
     }
     
     render() {
+        console.log(this.props.routeProps)
         return (
             <div>
                 <HeroVideo

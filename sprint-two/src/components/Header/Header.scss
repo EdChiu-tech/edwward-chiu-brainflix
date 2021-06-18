@@ -1,6 +1,8 @@
 @use "../../partials/colors" as *;
 @use "../../partials/mixins" as *;
 @use "../../partials/typography" as *;
+@use "../../partials/variables" as *;
+
 
 
 .header {
@@ -13,17 +15,22 @@
     @include tablet{
       flex-direction: row;
       justify-content: flex-start;
-      margin: 1rem 2rem;
+      margin: 0;
+      padding: 1rem 2rem;
+      border-bottom: $divider;
 
       @include desktop{
-        margin: 1.5rem 6rem;
+        border: none;
+        padding: 1.5rem 10rem;
       }
     }
 
   &__logo{
     &-container{
       @include flex;
+      height: 100%;
       width: 100%;
+      align-items: center;
       justify-content: center;
 
       @include tablet{
@@ -89,6 +96,7 @@
       border-radius: 4px;
       width: 100%;
       height: 100%;
+      text-decoration: none;
 
         @include tablet{
           width: 75%;
@@ -96,7 +104,7 @@
         }
 
         @include desktop{
-          width: 60%;
+          width: 100%;
         }
 
       &:hover{
@@ -104,7 +112,7 @@
       }
 
       &-icon{
-        padding: 0 10px;
+        padding-right: 10px;
       }
 
 

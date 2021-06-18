@@ -52,6 +52,10 @@
             flex-direction: row;
         }
 
+        @include desktop{
+            margin-right: 2rem;
+        }
+
         &-container{
             @include flex;
             width: 100%;
@@ -60,6 +64,7 @@
             
             @include tablet{
                 padding-bottom: 2rem;
+
             }
         }
 
@@ -108,7 +113,7 @@
 
             @include tablet{
                 margin: 0 0 0 1rem;
-                width: 200%;
+                width: 30%;
             }
         }
     }

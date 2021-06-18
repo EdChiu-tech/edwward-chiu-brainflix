@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import logo from "../../assets/logo/Logo-brainflix.svg"
 import avatar from "../../assets/images/Mohan-muruge.jpg"
 import upload from "../../assets/icons/Icon-upload.svg"
@@ -9,7 +10,9 @@ function Header() {
     return (
         <header className="header">
             <section className="header__logo-container">
-                <img className="header__logo-image" src={logo} alt="brainflix logo" />
+                <Link to="/">
+                    <img className="header__logo-image" src={logo} alt="brainflix logo" />
+                </Link>
             </section>
             <section className="header__form-container">
                 <form className="header__form">
@@ -19,10 +22,10 @@ function Header() {
                 </form>
             </section>
             <section className="header__button-container">
-                <button className="header__button">
-                    <img className="header__button-icon" src={upload} alt="upload icon" />
-                        UPLOAD
-                    </button>
+                <Link to="/UploadPage/" className="header__button">
+                    <img className="header__button-icon" src={upload} alt="upload icon"></img>
+                    UPLOAD
+                </Link>
                 <div className="header__avatar-container">
                     <img className="header__avatar" src={avatar} alt="user avatar" />
                 </div>
