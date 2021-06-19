@@ -4,14 +4,19 @@ import VideoDescription from "../VideoDescription/VideoDescription"
 import VideoList from "../VideoList/VideoList"
 import DisplayComments from "../DisplayComments/DisplayComments"
 import {API_URL, API_KEY} from "../../utils/utils"
-import "../../App.scss"
 import axios from "axios"
+import "../../App.scss"
 
 class MainPage extends Component {
     state = {
         videoList: [],
+        suggestedVideo: [],
         currentVideo: [],
         loading: true,
+    }
+
+    generateSuggestedVideos = () => {
+        return this.state.videoList.filter(video => video.id !== this.state.currentVideo.id)
     }
 
     getVideoById = (videoId)=>{
@@ -19,6 +24,7 @@ class MainPage extends Component {
             .then(res =>{
                 this.setState({
                     currentVideo: res.data,
+                    suggestedVideo: this.state.videoList.filter(video => video.id !== videoId),
                     loading: false,
                 })
             })
@@ -28,13 +34,18 @@ class MainPage extends Component {
     }
 
     componentDidMount(){
-        // 
         axios.get(`${API_URL}/videos/?api_key=${API_KEY}`)
             .then(res =>{
                 this.setState({
                     videoList: res.data
                 })
-                this.getVideoById(this.state.videoList[0].id)
+                console.log(this.props)
+                if(this.props.match.url === "/"){
+                    this.getVideoById(this.state.videoList[0].id)
+                }else{
+                    this.getVideoById(this.props.match.params.videoId)
+                }
+
             })
             .catch(err =>{
                 console.log(err)
@@ -42,19 +53,17 @@ class MainPage extends Component {
     }
 
     componentDidUpdate(prevProps){
-        //2
-
         const {videoId} = this.props.match.params;
         console.log(videoId, prevProps.match.params.videoId);
-        if(videoId !== prevProps.match.params.videoId){
+        if(this.props.match.url === "/" && videoId !== prevProps.match.params.videoId){
+            this.getVideoById(this.state.videoList[0].id)
+        }else if(videoId !== prevProps.match.params.videoId){
             this.getVideoById(videoId);
         }
-        console.log(this.props.match.params)
+
     }
 
     render() {
-        //0
-        console.log(this.props)
 
         if (this.state.loading === true) {
             return <div>Loading...</div>
@@ -77,7 +86,7 @@ class MainPage extends Component {
                     </div>
                     <div className="App__sidebar">
                         <VideoList
-                            data={this.state.videoList}
+                            data={this.state.suggestedVideo}
                         />
                     </div>
                 </div>
@@ -88,13 +97,3 @@ class MainPage extends Component {
 
 export default MainPage
 
-
-
-
-    // clickHandler = (video) => {
-    //     this.setState({ currentVideo: video })
-    // }
-
-    // preventDefault = (e) => {
-    //     e.preventDefault()
-    // }

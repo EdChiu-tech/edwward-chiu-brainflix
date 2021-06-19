@@ -15,15 +15,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/upload_page" component={UploadPage} />
-          <Route path="/:videoId"
-            render={(routeProps) => {
-              return <MainPage
-                {...routeProps}
-              />
-              }
-            }
-          />
-        </Switch>
+          <Route path="/:videoId" component={MainPage} />
+          </Switch>
       </BrowserRouter>
 
     );
