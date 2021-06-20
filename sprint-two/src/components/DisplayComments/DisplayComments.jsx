@@ -2,9 +2,8 @@ import Comments from "../Comments/Comments"
 import avatar from "../../assets/images/Mohan-muruge.jpg"
 import "./DisplayComments.scss"
 
-function DisplayComments({data : comments, preventDefault}) {
+function DisplayComments({data : comments}) {
 
-    console.log(comments)
 
     return (
         <section className="comments">
@@ -20,7 +19,7 @@ function DisplayComments({data : comments, preventDefault}) {
                         <div className="comments__avatar-container">
                             <img className="comments__avatar" src={avatar} alt="avatar" />
                         </div>
-                        <form className="comments__form" onSubmit={preventDefault}>
+                        <form className="comments__form" onSubmit={(e)=>e.preventDefault()}>
                             <textarea className="comments__form-input" placeholder="Write comment here"></textarea>
                             <button className="comments__form-button">COMMENT</button>
                         </form>

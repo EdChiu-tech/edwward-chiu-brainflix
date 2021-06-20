@@ -2,8 +2,7 @@ import {Link} from "react-router-dom"
 import "./SuggestedVideo.scss"
 
 
-function SuggestedVideo(props) {
-    let video = props.video
+function SuggestedVideo({video}) {
     return (
         <div className="video">
             <Link to={`/${video.id}`}>

@@ -1,12 +1,17 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import Thumbnail from "../../assets/images/Upload-video-preview.jpg"
 import "./UploadPage.scss"
 
 
-const UploadPage = () => {
+const UploadPage = (props) => {
+
+    const onSubmitHandler = (event) => {
+        event.preventDefault()
+        props.history.push("/")
+        alert("upload successful!")
+    }
     return (
-        <div className="upload">
+        <form className="upload" onSubmit={onSubmitHandler}>
             <h1 className="upload__header">Upload Video</h1>
             <div className="upload__form-container">
                 <div className="upload__desktop-container">
@@ -26,12 +31,13 @@ const UploadPage = () => {
                     </div>
                 </div>
                 <div className="upload__button-container">
-                    <Link className="upload__button">PUBLISH</Link>
-                    <Link className="upload__button upload__button--cancel">CANCEL</Link>
+                    <button className="upload__button">PUBLISH</button>
+                    <button className="upload__button upload__button--cancel" onClick={(e)=>e.preventDefault()}>CANCEL</button>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
+
 
 export default UploadPage

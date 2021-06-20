@@ -9,7 +9,7 @@ function Comments(props) {
     return (
         <div className="commentEntry">
             <div className="commentEntry__avatar-container">
-                <img className="commentEntry__avatar" alt=""/>
+                {/* <img className="commentEntry__avatar" alt=""/> */}
             </div>
             <div className="commentEntry__content-container">
                 <div className="commentEntry__name-date-container">

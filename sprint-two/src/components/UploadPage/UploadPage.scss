@@ -83,8 +83,7 @@
         }
     }
 
-    &__input{
-        &-container{
+    &__input-container{
         @include flex;
         margin-top: 1rem;
         flex-direction: column;
@@ -96,6 +95,8 @@
             }
 
         }
+
+    &__input{
         &-title{
             @include flex;
             background-color: $alabaster;
@@ -110,6 +111,7 @@
                 border-color:$primaryBlue;
             }
         }
+        
         &-description{
             background-color: $alabaster;
             padding: 1rem 0 0 1rem;
@@ -128,6 +130,7 @@
             }
         }
     }
+
     &__button{
         @include flex;
         @include flex-center;
@@ -139,6 +142,10 @@
         border-radius: 4px;
         padding: 0.8rem;
         width: 100%;
+
+        &:hover{
+            background-color:$primaryHover;
+        }
 
         @include tablet{
             font: $tListContact;

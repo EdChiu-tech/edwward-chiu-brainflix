@@ -15,10 +15,6 @@ class MainPage extends Component {
         loading: true,
     }
 
-    generateSuggestedVideos = () => {
-        return this.state.videoList.filter(video => video.id !== this.state.currentVideo.id)
-    }
-
     getVideoById = (videoId)=>{
         axios.get(`${API_URL}/videos/${videoId}/?api_key=${API_KEY}`)
             .then(res =>{
@@ -39,13 +35,11 @@ class MainPage extends Component {
                 this.setState({
                     videoList: res.data
                 })
-                console.log(this.props)
                 if(this.props.match.url === "/"){
                     this.getVideoById(this.state.videoList[0].id)
                 }else{
                     this.getVideoById(this.props.match.params.videoId)
                 }
-
             })
             .catch(err =>{
                 console.log(err)
@@ -54,13 +48,11 @@ class MainPage extends Component {
 
     componentDidUpdate(prevProps){
         const {videoId} = this.props.match.params;
-        console.log(videoId, prevProps.match.params.videoId);
         if(this.props.match.url === "/" && videoId !== prevProps.match.params.videoId){
             this.getVideoById(this.state.videoList[0].id)
         }else if(videoId !== prevProps.match.params.videoId){
             this.getVideoById(videoId);
         }
-
     }
 
     render() {
