@@ -3,7 +3,7 @@ import avatar from "../../assets/images/Mohan-muruge.jpg"
 import "./DisplayComments.scss"
 
 function DisplayComments({data, handleSubmitComments, handleDeleteComments}) {
-
+    
     return (
         <section className="comments">
             <div className="comments__counter-container">
@@ -12,7 +12,7 @@ function DisplayComments({data, handleSubmitComments, handleDeleteComments}) {
             <div className="comments__input-section">
                 <div className="comments__comment-box">
                     <div>
-                        <h3 className="comments__form-header">JOIN THE CONVERSATION </h3>
+                        <h3 className="comments__form-header"> JOIN THE CONVERSATION </h3>
                     </div>
                     <div className="comments__form-container">
                         <div className="comments__avatar-container">
@@ -26,7 +26,9 @@ function DisplayComments({data, handleSubmitComments, handleDeleteComments}) {
                 </div>
             </div>
             <div className="comments__container">
-                {data.comments.map(comment => {
+                {data.comments.sort((a,b)=>{
+                    return b.timestamp - a.timestamp
+                }).map(comment => {
                     return (
                         <Comments
                             key={comment.id}

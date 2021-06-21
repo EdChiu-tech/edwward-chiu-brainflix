@@ -16,6 +16,11 @@
             margin: 2rem 0 0 0;
         }
     
+    &__container{
+        height: 60vh;
+        overflow-y: scroll;
+    }
+
     &__counter{
         font: $mSubheader;
         
