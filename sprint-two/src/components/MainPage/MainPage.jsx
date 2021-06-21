@@ -29,6 +29,18 @@ class MainPage extends Component {
             })
     }
 
+    // postComments = (event)=>{
+    //     const videoId = this.state.currentVideo.id
+    //     axios.post(`${API_URL}/videos/${videoId}/comments?api_key=${API_KEY}`, {name:"test", comment:event.target.userComment.value})
+    //         .then(res =>{
+    //             this.getVideoById(videoId)
+    //         })
+    //         .catch(err =>{
+    //             console.log(err)
+    //         }) 
+    //         event.preventDefault()
+    //     }
+
     componentDidMount(){
         axios.get(`${API_URL}/videos/?api_key=${API_KEY}`)
             .then(res =>{
@@ -74,6 +86,7 @@ class MainPage extends Component {
                         <DisplayComments
                             data={this.state.currentVideo.comments}
                             preventDefault={this.preventDefault}
+                            postComments={this.postComments}
                         />
                     </div>
                     <div className="App__sidebar">

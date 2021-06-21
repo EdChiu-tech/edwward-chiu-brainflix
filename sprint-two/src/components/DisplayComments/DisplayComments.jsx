@@ -2,7 +2,7 @@ import Comments from "../Comments/Comments"
 import avatar from "../../assets/images/Mohan-muruge.jpg"
 import "./DisplayComments.scss"
 
-function DisplayComments({data : comments}) {
+function DisplayComments({data : comments, postComments}) {
 
 
     return (
@@ -19,8 +19,8 @@ function DisplayComments({data : comments}) {
                         <div className="comments__avatar-container">
                             <img className="comments__avatar" src={avatar} alt="avatar" />
                         </div>
-                        <form className="comments__form" onSubmit={(e)=>e.preventDefault()}>
-                            <textarea className="comments__form-input" placeholder="Write comment here"></textarea>
+                        <form className="comments__form" onSubmit={postComments}>
+                            <textarea className="comments__form-input" placeholder="Write comment here" name="userComment"></textarea>
                             <button className="comments__form-button">COMMENT</button>
                         </form>
                     </div>
