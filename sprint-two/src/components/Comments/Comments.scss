@@ -26,6 +26,7 @@
     &__content-container{
         @include flex;
         flex-direction: column;
+        width: 100%;
 
         @include desktop{
             margin-right: 2rem;
@@ -66,5 +67,23 @@
         @include tablet{
             font: $tBody;
         }
+    }
+
+    &__button-container{
+        @include flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+    
+    &__button-delete{
+        @include flex;
+        @include flex-center;
+        width: 50px;
+        height: 25px;
+        border-radius: 4px;
+        font: $mLabelsButtons;
+        color: $mercury;
+        border: none;
+        background-color: $primaryBlue;
     }
 }

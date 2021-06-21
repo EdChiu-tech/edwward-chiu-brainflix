@@ -2,13 +2,12 @@ import Comments from "../Comments/Comments"
 import avatar from "../../assets/images/Mohan-muruge.jpg"
 import "./DisplayComments.scss"
 
-function DisplayComments({data : comments, postComments}) {
-
+function DisplayComments({data, handleSubmitComments, handleDeleteComments}) {
 
     return (
         <section className="comments">
             <div className="comments__counter-container">
-                <h3 className="comments__counter">{`${comments.length} Comments`}</h3>
+                <h3 className="comments__counter">{`${data.comments.length} Comments`}</h3>
             </div>
             <div className="comments__input-section">
                 <div className="comments__comment-box">
@@ -19,7 +18,7 @@ function DisplayComments({data : comments, postComments}) {
                         <div className="comments__avatar-container">
                             <img className="comments__avatar" src={avatar} alt="avatar" />
                         </div>
-                        <form className="comments__form" onSubmit={postComments}>
+                        <form className="comments__form" onSubmit={handleSubmitComments}>
                             <textarea className="comments__form-input" placeholder="Write comment here" name="userComment"></textarea>
                             <button className="comments__form-button">COMMENT</button>
                         </form>
@@ -27,7 +26,7 @@ function DisplayComments({data : comments, postComments}) {
                 </div>
             </div>
             <div className="comments__container">
-                {comments.map(comment => {
+                {data.comments.map(comment => {
                     return (
                         <Comments
                             key={comment.id}
@@ -35,6 +34,7 @@ function DisplayComments({data : comments, postComments}) {
                             commentId={comment.id}
                             timestamp={comment.timestamp}
                             comment={comment.comment}
+                            handleDeleteComments={handleDeleteComments}
                         />
                     )
                 })
