@@ -1,0 +1,142 @@
+@use "../../partials/colors" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/typography" as *;
+@use "../../partials/variables" as *;
+
+.description{
+    @include flex;
+    margin: 0 1rem;
+    flex-direction: column;
+    
+    @include tablet{
+        margin: 1rem 2rem;
+    }
+
+    @include desktop{
+        margin: 0 0 2rem 0;
+    }
+
+    &__info-container{
+        @include tablet{
+            @include flex;
+            margin: 1rem 0;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+    }
+
+    &__container{
+        @include flex;
+        flex-direction: column;
+        border-bottom: $divider;
+    }
+    
+    &__header{
+        font: $mPageHeader;
+
+    @include tablet {
+        font: $tMainHeader;
+    }
+
+        &-container{
+            margin: 2rem 0 1rem 0;
+        }
+    }
+
+    &__channel-time-container{
+        @include flex;
+        align-items: flex-end;
+    }
+
+    &__channel{
+        font: $mSubheader;
+        margin-right: 10px;
+
+        @include tablet{
+            font: $tSubHeader;
+        }
+    }
+
+    &__date{
+        font: $mSubheader;
+        color: $silver;
+        font-weight: 400;
+
+        @include tablet{
+            font: $tSubHeader;
+            font-weight: 400;
+        }
+    }
+    
+    &__views-likes-container{
+        @include flex;
+        margin: 1.5rem 0;
+
+        @include tablet{
+            align-items: center;
+            margin: 0;
+        }
+    }
+
+    &__views{
+        @include flex;
+
+        &-counter{
+            margin-right: 30px;
+
+            @include tablet{
+                font: $tSubHeader;
+                font-weight: 400;
+            }
+        }
+
+        &-icon-container{
+            margin-right: 10px;
+
+            @include tablet{
+                @include flex;
+                align-items: center;
+            }
+        }
+    }
+
+    &__likes{
+        @include flex;
+
+        &-counter{
+            margin-right: 30px;
+
+            @include tablet{
+                font: $tSubHeader;
+                font-weight: 400;
+            }
+        }
+
+        &-icon-container{
+            margin-right: 10px;
+
+            @include tablet{
+                @include flex;
+                align-items: center;
+            }
+        }
+
+    }
+    
+    &__content{
+        @include flex;
+        font: $mBody;
+
+        @include tablet{
+            font: $tBody;
+        }
+        
+        &-container{
+            margin: 1rem 0;
+
+            @include tablet{
+                width: 75%;
+            }
+        }
+    }
+}

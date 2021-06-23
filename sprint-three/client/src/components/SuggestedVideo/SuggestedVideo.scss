@@ -1,0 +1,52 @@
+@use "../../partials/colors" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/typography" as *;
+
+.video{
+    @include flex;
+    margin: 1rem 0;
+
+    &__img{
+        object-fit: cover;
+        width: 100%;
+        height: auto;
+    }
+
+    &__container{
+        @include flex;
+        border-radius: 4px;
+        overflow: hidden;
+        width: 140px;
+        height: 80px;
+        min-width: 140px;
+        min-height: 70px;
+    }
+
+    &__desc-container{
+        @include flex;
+        justify-content: space-evenly;
+        margin-left: 1rem;
+        flex-direction: column;
+    } 
+
+    &__title{
+        font: $mSubheader;
+        margin-bottom: 0.5rem;
+        display:
+            -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__creator{
+        font: $mBody;
+        display:
+            -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

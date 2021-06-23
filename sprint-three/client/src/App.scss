@@ -1,0 +1,25 @@
+@use "./partials/colors" as *;
+@use "./partials/mixins" as *;
+@use "./partials/typography" as *;
+@use "./partials/variables" as *;
+
+.App{
+    &__divider-container{
+        @include flex;
+        flex-direction: column;
+            @include desktop{
+                flex-direction: row;
+            }
+    }
+    &__main-content{
+        @include desktop{
+            margin-left: 10rem;
+        }
+    }
+    &__sidebar{
+        @include desktop{
+            margin-right: 10rem;
+            border-left: $divider;
+        }
+    }
+}
