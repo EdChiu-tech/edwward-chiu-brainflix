@@ -1,7 +1,10 @@
 const express = require("express");
 const { v4: uuid } = require("uuid");
 const router = express.Router();
+const fs = require("fs");
 const videos = require("../data/videos.json");
+
+
 
 const getVideoSummary = (videos) => {
     let videoSummaryArray = [];
@@ -26,7 +29,6 @@ const getVideoById = (vid) => {
 }
 
 const postVideo = (upload) => {
-    console.log(upload)
     let newUpload =
             {
                 "id": uuid(),
@@ -41,21 +43,50 @@ const postVideo = (upload) => {
                 "timestamp": Date.now(),
                 "comments": [],
             }
-    videos.push(newUpload)
-    return videos
+
+    // let parseOldData = JSON.parse(videos)
+    let oldData = [...videos]
+    console.log(oldData)
+    let newData =  [...oldData, newUpload]
+    console.log(newData)
+    let newDataJSON = JSON.stringify(newData, null, 2)
+    fs.writeFileSync("./data/videos.json", newDataJSON,"utf8", (err, data) =>{
+        console.log(data)
+        if(err){
+            console.log(err);
+            return;
+        }
+        console.log("file updated")
+    })
+    return newDataJSON
 }
 
+// fs.readFile("./data/videos.json","utf8", (err, data) =>{
+//     console.log(data)
+//     let obj = JSON.parse(data);
+//     obj.req.body.push(videos);
+//     let stringObj = JSON.stringify(obj);
+// fs.writeFile("./data/videos.json", stringObj, "utf8", (err)=>{
+//     if(err){
+//         console.log(err);
+//         return;
+//     };
+//     console.log("file created")
+
 router.get("/videos", (req, res) => {
-    res.status(200).json(getVideoSummary(videos));
+    res.status(200, "video Id requested").json(getVideoSummary(videos));
 })
 
 
 router.get("/videos/:videoId", (req, res) => {
-    res.status(200).json(getVideoById(req))
+    res.status(200, "video id found").json(getVideoById(req))
 })
 
-router.post("/upload", (req, res) => {
-    res.status(201).json(postVideo(req.body))
-})
+router.post("/videos", (req, res) => {
+    let newInfo = req.body
+    res.status(201, "video uploaded").json(postVideo(newInfo));
+});
+
 
 module.exports = router;
+

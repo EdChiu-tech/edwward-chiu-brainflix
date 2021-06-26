@@ -10,13 +10,16 @@ const UploadPage = (props) => {
     const handleSubmitVideo = (event) => {
         const uploadTitle = event.target.title.value
         const uploadDescription = event.target.description.value
-        axios.post(`${API_URL}/upload`, { title: uploadTitle, description: uploadDescription })
+        axios.post(`${API_URL}/videos`, { title: uploadTitle, description: uploadDescription })
             .then(res => {
                 event.preventDefault()
                 props.history.push("/")
                 alert("upload successful!")
             })
             console.log(props.history)
+            .catch(err =>{
+                console.log(err)
+            })
     }
 
     return (
@@ -40,8 +43,8 @@ const UploadPage = (props) => {
                     </div>
                 </div>
                 <div className="upload__button-container">
-                    <button className="upload__button">PUBLISH</button>
-                    <button className="upload__button upload__button--cancel" onClick={(e) => e.preventDefault()}>CANCEL</button>
+                    <button className="upload__button" type="submit">PUBLISH</button>
+                    <button className="upload__button upload__button--cancel" type="button" onClick={(e) => e.preventDefault()}>CANCEL</button>
                 </div>
             </div>
         </form>
