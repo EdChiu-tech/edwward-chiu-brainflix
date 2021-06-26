@@ -21,7 +21,7 @@ const getVideoSummary = (videos) => {
 
 const getVideoById = (vid) => {
     let currentVideo = vid.params.videoId;
-    let currentVideoId = videos.filter(video => video.id === currentVideo);
+    let currentVideoId = videos.find(video => video.id === currentVideo);
     return currentVideoId
 }
 
@@ -29,7 +29,7 @@ const postVideo = (upload) => {
     console.log(upload)
     let newUpload =
             {
-                "id": uuid,
+                "id": uuid(),
                 "title": upload.title,
                 "channel": "Edward",
                 "image": "images/Upload-video-preview.jpg",

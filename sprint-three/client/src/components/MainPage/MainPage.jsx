@@ -3,7 +3,7 @@ import HeroVideo from "../HeroVideo/HeroVideo"
 import VideoDescription from "../VideoDescription/VideoDescription"
 import VideoList from "../VideoList/VideoList"
 import DisplayComments from "../DisplayComments/DisplayComments"
-import { API_URL, API_KEY } from "../../utils/utils"
+import { API_URL } from "../../utils/utils"
 import axios from "axios"
 import "../../App.scss"
 
@@ -16,13 +16,14 @@ class MainPage extends Component {
     }
 
     getVideoById = (videoId) => {
-        axios.get(`${API_URL}/videos/${videoId}/?api_key=${API_KEY}`)
+        axios.get(`${API_URL}/videos/${videoId}`)
             .then(res => {
                 this.setState({
                     currentVideo: res.data,
                     suggestedVideo: this.state.videoList.filter(video => video.id !== videoId),
                     loading: false,
                 })
+                console.log(res.data)
             })
             .catch(err => {
                 console.log(err)
@@ -31,7 +32,7 @@ class MainPage extends Component {
 
     handleSubmitComments = (event) => {
         const videoId = this.state.currentVideo.id
-        axios.post(`${API_URL}/videos/${videoId}/comments?api_key=${API_KEY}`, { name: "User", comment: event.target.userComment.value })
+        axios.post(`${API_URL}/videos/${videoId}/comments`, { name: "User", comment: event.target.userComment.value })
             .then(res => {
                 this.getVideoById(videoId)
                 event.target.userComment.value=""
@@ -44,7 +45,7 @@ class MainPage extends Component {
 
     handleDeleteComments = (event, commentId) => {
         const videoId = this.state.currentVideo.id
-        axios.delete(`${API_URL}/videos/${videoId}/comments/${commentId}?api_key=${API_KEY}`)
+        axios.delete(`${API_URL}/videos/${videoId}/comments/${commentId}`)
             .then(res => {
                 this.getVideoById(videoId)
             })
@@ -55,7 +56,7 @@ class MainPage extends Component {
     }
 
     componentDidMount() {
-        axios.get(`${API_URL}/videos/?api_key=${API_KEY}`)
+        axios.get(`${API_URL}/videos`)
             .then(res => {
                 this.setState({
                     videoList: res.data

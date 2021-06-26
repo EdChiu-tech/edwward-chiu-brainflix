@@ -1,17 +1,26 @@
 import React from "react"
+import axios from "axios"
+import { API_URL } from  "../../utils/utils"
 import Thumbnail from "../../assets/images/Upload-video-preview.jpg"
 import "./UploadPage.scss"
 
 
 const UploadPage = (props) => {
 
-    const onSubmitHandler = (event) => {
-        event.preventDefault()
-        props.history.push("/")
-        alert("upload successful!")
+    const handleSubmitVideo = (event) => {
+        const uploadTitle = event.target.title.value
+        const uploadDescription = event.target.description.value
+        axios.post(`${API_URL}/upload`, { title: uploadTitle, description: uploadDescription })
+            .then(res => {
+                event.preventDefault()
+                props.history.push("/")
+                alert("upload successful!")
+            })
+            console.log(props.history)
     }
+
     return (
-        <form className="upload" onSubmit={onSubmitHandler}>
+        <form className="upload" onSubmit={handleSubmitVideo}>
             <h1 className="upload__header">Upload Video</h1>
             <div className="upload__form-container">
                 <div className="upload__desktop-container">
@@ -32,7 +41,7 @@ const UploadPage = (props) => {
                 </div>
                 <div className="upload__button-container">
                     <button className="upload__button">PUBLISH</button>
-                    <button className="upload__button upload__button--cancel" onClick={(e)=>e.preventDefault()}>CANCEL</button>
+                    <button className="upload__button upload__button--cancel" onClick={(e) => e.preventDefault()}>CANCEL</button>
                 </div>
             </div>
         </form>

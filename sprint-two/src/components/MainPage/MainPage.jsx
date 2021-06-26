@@ -23,6 +23,7 @@ class MainPage extends Component {
                     suggestedVideo: this.state.videoList.filter(video => video.id !== videoId),
                     loading: false,
                 })
+                console.log(res.data)
             })
             .catch(err => {
                 console.log(err)

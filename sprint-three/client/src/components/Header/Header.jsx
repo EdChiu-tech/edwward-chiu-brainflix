@@ -22,7 +22,7 @@ function Header() {
                 </form>
             </section>
             <section className="header__button-container">
-                <Link to="/upload_page/" className="header__button">
+                <Link to="/upload" className="header__button">
                     <img className="header__button-icon" src={upload} alt="upload icon"></img>
                     UPLOAD
                 </Link>

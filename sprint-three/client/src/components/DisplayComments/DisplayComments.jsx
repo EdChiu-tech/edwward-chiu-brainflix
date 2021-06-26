@@ -2,8 +2,8 @@ import Comments from "../Comments/Comments"
 import avatar from "../../assets/images/Mohan-muruge.jpg"
 import "./DisplayComments.scss"
 
-function DisplayComments({data, handleSubmitComments, handleDeleteComments}) {
-    console.log(data.comments)
+function DisplayComments({ data, handleSubmitComments, handleDeleteComments }) {
+    console.log(typeof(data))
     return (
         <section className="comments">
             <div className="comments__counter-container">
@@ -26,9 +26,7 @@ function DisplayComments({data, handleSubmitComments, handleDeleteComments}) {
                 </div>
             </div>
             <div className="comments__container">
-                {data.comments.sort((a,b)=>{
-                    return b.timestamp - a.timestamp
-                }).map(comment => {
+            {data.comments.map(comment => {
                     return (
                         <Comments
                             key={comment.id}
@@ -47,3 +45,20 @@ function DisplayComments({data, handleSubmitComments, handleDeleteComments}) {
 }
 
 export default DisplayComments
+
+// {
+//     data.comments.sort((a, b) => {
+//         return b.timestamp - a.timestamp
+//     }).map(comment => {
+//         return (
+//             <Comments
+//                 key={comment.id}
+//                 name={comment.name}
+//                 commentId={comment.id}
+//                 timestamp={comment.timestamp}
+//                 comment={comment.comment}
+//                 handleDeleteComments={handleDeleteComments}
+//             />
+//         )
+//     })
+// }

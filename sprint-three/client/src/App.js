@@ -13,7 +13,7 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={MainPage} />
-          <Route exact path="/upload_page" component={UploadPage} />
+          <Route exact path="/upload" component={UploadPage} />
           <Route path="/:videoId" component={MainPage} />
           </Switch>
       </BrowserRouter>
