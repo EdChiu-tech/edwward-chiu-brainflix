@@ -1,5 +1,5 @@
-import views from "../../assets/icons/Icon-views.svg"
-import likes from "../../assets/icons/Icon-likes.svg"
+import views from "../../../assets/icons/Icon-views.svg"
+import likes from "../../../assets/icons/Icon-likes.svg"
 import "./VideoDescription.scss"
 
 function VideoDescription(props) {

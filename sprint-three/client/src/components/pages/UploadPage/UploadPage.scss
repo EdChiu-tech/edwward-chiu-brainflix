@@ -1,7 +1,7 @@
-@use "../../partials/colors" as *;
-@use "../../partials/mixins" as *;
-@use "../../partials/typography" as *;
-@use "../../partials/variables" as *;
+@use "../../../partials/colors" as *;
+@use "../../../partials/mixins" as *;
+@use "../../../partials/typography" as *;
+@use "../../../partials/variables" as *;
 
 .upload{
     @include flex;
@@ -156,6 +156,11 @@
             background-color: white;
             color: $primaryBlue;
             margin-top: 0.5rem;
+
+            &:hover{
+                background-color: red;
+                color: white;
+            }
         }
 
         &-container{

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom"
-import logo from "../../assets/logo/Logo-brainflix.svg"
-import avatar from "../../assets/images/Mohan-muruge.jpg"
-import upload from "../../assets/icons/Icon-upload.svg"
+import logo from "../../../assets/logo/Logo-brainflix.svg"
+import avatar from "../../../assets/images/Mohan-muruge.jpg"
+import upload from "../../../assets/icons/Icon-upload.svg"
 import "./Header.scss"
 
 

@@ -4,8 +4,6 @@ const router = express.Router();
 const fs = require("fs");
 const videos = require("../data/videos.json");
 
-
-
 const getVideoSummary = (videos) => {
     let videoSummaryArray = [];
     videos.forEach(video => {
@@ -45,12 +43,11 @@ const postVideo = (upload) => {
             }
 
     // let parseOldData = JSON.parse(videos)
-    let oldData = [...videos]
-    console.log(oldData)
-    let newData =  [...oldData, newUpload]
-    console.log(newData)
+    // let oldData = [...videos]
+    // console.log(oldData)
+    let newData =  [...videos, newUpload]
     let newDataJSON = JSON.stringify(newData, null, 2)
-    fs.writeFileSync("./data/videos.json", newDataJSON,"utf8", (err, data) =>{
+    fs.writeFile("./data/videos.json", newDataJSON,"utf8", (err, data) =>{
         console.log(data)
         if(err){
             console.log(err);
@@ -85,6 +82,7 @@ router.get("/videos/:videoId", (req, res) => {
 router.post("/videos", (req, res) => {
     let newInfo = req.body
     res.status(201, "video uploaded").json(postVideo(newInfo));
+    res.redirect(301, "/");
 });
 
 

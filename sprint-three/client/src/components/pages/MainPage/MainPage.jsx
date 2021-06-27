@@ -1,16 +1,16 @@
 import { Component } from "react"
-import HeroVideo from "../HeroVideo/HeroVideo"
-import VideoDescription from "../VideoDescription/VideoDescription"
-import VideoList from "../VideoList/VideoList"
-import DisplayComments from "../DisplayComments/DisplayComments"
-import { API_URL } from "../../utils/utils"
+import HeroVideo from "../../components/HeroVideo/HeroVideo"
+import VideoDescription from "../../components/VideoDescription/VideoDescription"
+import VideoList from "../../components/VideoList/VideoList"
+import DisplayComments from "../../components/DisplayComments/DisplayComments"
+import { API_URL } from "../../../utils/utils"
 import axios from "axios"
-import "../../App.scss"
+import "../../../App.scss"
 
 class MainPage extends Component {
     state = {
         videoList: [],
-        suggestedVideo: [],
+        suggestedVideos: [],
         currentVideo: [],
         loading: true,
     }
@@ -20,10 +20,10 @@ class MainPage extends Component {
             .then(res => {
                 this.setState({
                     currentVideo: res.data,
-                    suggestedVideo: this.state.videoList.filter(video => video.id !== videoId),
+                    suggestedVideos: this.state.videoList.filter(video => video.id !== videoId),
                     loading: false,
                 })
-                console.log(res.data)
+                console.log(this.state.suggestedVideos)
             })
             .catch(err => {
                 console.log(err)
@@ -106,7 +106,7 @@ class MainPage extends Component {
                     </div>
                     <div className="App__sidebar">
                         <VideoList
-                            data={this.state.suggestedVideo}
+                            data={this.state.suggestedVideos}
                         />
                     </div>
                 </div>

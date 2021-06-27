@@ -1,8 +1,9 @@
 import React from "react"
 import axios from "axios"
-import { API_URL } from  "../../utils/utils"
-import Thumbnail from "../../assets/images/Upload-video-preview.jpg"
+import { API_URL } from  "../../../utils/utils"
+import Thumbnail from "../../../assets/images/Upload-video-preview.jpg"
 import "./UploadPage.scss"
+
 
 
 const UploadPage = (props) => {
@@ -10,16 +11,26 @@ const UploadPage = (props) => {
     const handleSubmitVideo = (event) => {
         const uploadTitle = event.target.title.value
         const uploadDescription = event.target.description.value
+        if(uploadTitle !== "" || uploadDescription !==""){
+        props.history.push("/")
+        alert("upload successful!")
+        event.preventDefault()
         axios.post(`${API_URL}/videos`, { title: uploadTitle, description: uploadDescription })
             .then(res => {
-                event.preventDefault()
-                props.history.push("/")
-                alert("upload successful!")
+            console.log(res)
             })
-            console.log(props.history)
             .catch(err =>{
                 console.log(err)
             })
+    }else{
+        alert("please complete the form")
+        event.preventDefault()
+    }
+}
+
+    const handleClickCancel = (event) =>{
+        props.history.push("/")
+        event.preventDefault()
     }
 
     return (
@@ -44,12 +55,11 @@ const UploadPage = (props) => {
                 </div>
                 <div className="upload__button-container">
                     <button className="upload__button" type="submit">PUBLISH</button>
-                    <button className="upload__button upload__button--cancel" type="button" onClick={(e) => e.preventDefault()}>CANCEL</button>
+                    <button className="upload__button upload__button--cancel" type="button" onClick={handleClickCancel}>CANCEL</button>
                 </div>
             </div>
         </form>
     )
 }
-
 
 export default UploadPage

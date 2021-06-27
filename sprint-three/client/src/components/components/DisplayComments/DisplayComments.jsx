@@ -1,5 +1,5 @@
 import Comments from "../Comments/Comments"
-import avatar from "../../assets/images/Mohan-muruge.jpg"
+import avatar from "../../../assets/images/Mohan-muruge.jpg"
 import "./DisplayComments.scss"
 
 function DisplayComments({ data, handleSubmitComments, handleDeleteComments }) {

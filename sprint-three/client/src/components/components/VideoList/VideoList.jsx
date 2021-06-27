@@ -11,7 +11,6 @@ function VideoList({data}) {
                         <SuggestedVideo
                             key={video.id}
                             video={video}
-                            // clickHandler={props.clickHandler}
                         />
                     )
                 })
