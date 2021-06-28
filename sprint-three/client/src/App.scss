@@ -3,6 +3,7 @@
 @use "./partials/typography" as *;
 @use "./partials/variables" as *;
 
+
 .App{
     &__divider-container{
         @include flex;

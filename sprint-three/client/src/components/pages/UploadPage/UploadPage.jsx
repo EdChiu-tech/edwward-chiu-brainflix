@@ -11,10 +11,9 @@ const UploadPage = (props) => {
     const handleSubmitVideo = (event) => {
         const uploadTitle = event.target.title.value
         const uploadDescription = event.target.description.value
-        if(uploadTitle !== "" || uploadDescription !==""){
+        if(uploadTitle !== "" && uploadDescription !== ""){
         props.history.push("/")
         alert("upload successful!")
-        event.preventDefault()
         axios.post(`${API_URL}/videos`, { title: uploadTitle, description: uploadDescription })
             .then(res => {
             console.log(res)
