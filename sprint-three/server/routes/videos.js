@@ -2,6 +2,7 @@ const express = require("express");
 const { v4: uuid } = require("uuid");
 const router = express.Router();
 const fs = require("fs");
+// const videoModel = require("../model/videoModel")
 const videos = require("../data/videos.json");
 
 const getVideoSummary = (videos) => {
@@ -25,7 +26,10 @@ const getVideoById = (vid) => {
     let currentVideoId = videos.find(video => video.id === currentVideo);
     return currentVideoId
 }
-
+// findOne
+// Document.prototype.updateOne(push)
+// Document.prototype.updateOne(pull)
+// .create
 const postVideo = (upload) => {
     let newUpload =
             {
@@ -41,18 +45,24 @@ const postVideo = (upload) => {
                 "timestamp": Date.now(),
                 "comments": [],
             }
-
-    let newData =  [...videos, newUpload]
-    let newDataJSON = JSON.stringify(newData, null, 2)
-    fs.writeFile("./data/videos.json", newDataJSON,"utf8", (err, data) =>{
-        console.log(data)
-        if(err){
-            console.log(err);
-            return;
+    videoModel.create(newUpload, (error, success) => {
+        if(error){
+            console.log(error)
+        } else {
+            console.log(success)
         }
-        console.log("file updated")
     })
-    return newDataJSON
+    // let newData =  [...videos, newUpload]
+    // let newDataJSON = JSON.stringify(newData, null, 2)
+    // fs.writeFile("./data/videos.json", newDataJSON,"utf8", (err, data) =>{
+    //     console.log(data)
+    //     if(err){
+    //         console.log(err);
+    //         return;
+    //     }
+    //     console.log("file updated")
+    // })
+    // return newDataJSON
 }
 
 

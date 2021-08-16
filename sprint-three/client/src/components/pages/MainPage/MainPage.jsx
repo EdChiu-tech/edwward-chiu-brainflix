@@ -23,25 +23,42 @@ class MainPage extends Component {
                     suggestedVideos: this.state.videoList.filter(video => video.id !== videoId),
                     loading: false,
                 })
-                console.log(this.state.suggestedVideos)
             })
             .catch(err => {
                 console.log(err)
             })
     }
 
+    // handleSubmitComments = (event) => {
+    //     const videoId = this.state.currentVideo.id
+    //     axios.post(`${API_URL}/videos/${videoId}/comments`, { name: "User", comment: event.target.userComment.value })
+    //         .then(res => {
+    //             this.getVideoById(videoId)
+    //             event.target.userComment.value=""
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    //     event.preventDefault()
+    // }
+
     handleSubmitComments = (event) => {
         const videoId = this.state.currentVideo.id
-        axios.post(`${API_URL}/videos/${videoId}/comments`, { name: "User", comment: event.target.userComment.value })
+        const uploadComment = event.target.userComment.value
+        event.preventDefault()
+        if(uploadComment !== ""){
+            axios.post(`${API_URL}/videos/${videoId}/comments`, { name: "User", comment: event.target.userComment.value })
             .then(res => {
-                this.getVideoById(videoId)
-                event.target.userComment.value=""
+            console.log(res)
             })
-            .catch(err => {
+            .catch(err =>{
                 console.log(err)
             })
+    }else{
+        alert("please enter a comment")
         event.preventDefault()
     }
+}
 
     handleDeleteComments = (event, commentId) => {
         const videoId = this.state.currentVideo.id

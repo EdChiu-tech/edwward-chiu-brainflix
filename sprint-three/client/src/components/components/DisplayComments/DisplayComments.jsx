@@ -3,7 +3,6 @@ import avatar from "../../../assets/images/Mohan-muruge.jpg"
 import "./DisplayComments.scss"
 
 function DisplayComments({ data, handleSubmitComments, handleDeleteComments }) {
-    console.log(typeof(data))
     return (
         <section className="comments">
             <div className="comments__counter-container">
